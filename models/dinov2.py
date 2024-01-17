@@ -712,6 +712,7 @@ def dinov2_vit_small_14(**kwargs):
         num_heads=6,
         mlp_ratio=4,
         block_fn=partial(Block, attn_class=MemEffAttention),
+        block_chunks=4,
         **kwargs,
     )
     return model
@@ -725,6 +726,8 @@ def dinov2_vit_base_14(**kwargs):
         num_heads=12,
         mlp_ratio=4,
         block_fn=partial(Block, attn_class=MemEffAttention),
+        drop_path_rate=0.4,
+        block_chunks=4,
         **kwargs,
     )
     return model
@@ -738,9 +741,31 @@ def dinov2_vit_large_14(**kwargs):
         num_heads=16,
         mlp_ratio=4,
         block_fn=partial(Block, attn_class=MemEffAttention),
+        drop_path_rate=0.4,
+        block_chunks=4,
         **kwargs,
     )
     return model
+
+
+def dinov2_vit_giant2(patch_size=16, num_register_tokens=0, **kwargs):
+    """
+    Close to ViT-giant, with embed-dim 1536 and 24 heads => embed-dim per head 64
+    """
+    model = DinoVisionTransformer(
+        patch_size=patch_size,
+        embed_dim=1536,
+        depth=40,
+        num_heads=24,
+        mlp_ratio=4,
+        block_fn=partial(Block, attn_class=MemEffAttention),
+        drop_path_rate=0.4,
+        block_chunks=4,
+        # num_register_tokens=num_register_tokens,
+        **kwargs,
+    )
+    return model
+
 
 if __name__ == '__main__':
     from torchinfo import summary
