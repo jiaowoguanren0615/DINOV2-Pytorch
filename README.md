@@ -3,7 +3,7 @@
 # [DINOv2: Learning Robust Visual Features without Supervision](https://arxiv.org/abs/2304.07193)
 This is a warehouse for DinoV2-Pytorch-model, can be used to train your image-datasets for classification tasks.
 The code for the self-supervised training part is being improved and will be uploaded soon.
-The code mainly comes from official [source code](https://github.com/facebookresearch/dinov2)
+The code mainly comes from official [source code](https://github.com/facebookresearch/dinov2).
 Added DINOv2 backbones with registers, following [Vision Transformers Need Registers](https://arxiv.org/abs/2309.16588).
 
 ## Preparation
